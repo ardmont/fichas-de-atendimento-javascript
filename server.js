@@ -3,7 +3,10 @@ const http = require('http')
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+
+const router = require('./backend/router')
 const environment = process.env.NODE_ENV || 'production'
+
 let dbUrl
 
 // Sets the mongodb connection URL according to the defined environment
@@ -25,6 +28,7 @@ const port = process.env.PORT || 3000
 
 app.use(cors()) // Enable cors
 app.use(express.json()) // Parses all json data sent to the REST endpoints
+app.use('/api', router) // Listen to the public REST endpoints
 
 // Creates http server with express app
 const httpServer = http.createServer(app)
