@@ -9,7 +9,6 @@ router
   .post('/', async (req, res) => {
     try {
       const user = await User.findOne({ login: req.body.login })
-      console.log(req.body)
       // Verifica se usuário existe e se a senha é valida, e retorna uma mensagem de erro no caso contrário
       if (!user || (user && !bcrypt.compareSync(req.body.password, user.password))) res.json({ success: false, message: 'Usuário ou senha inválidos' })
 
