@@ -23,8 +23,8 @@ const useStyles = makeStyles({
 })
 
 const Login = (props) => {
-  // Creates state hooks for email and password
-  const [email, setEmail] = useState(null)
+  // Creates state hooks for login and password
+  const [login, setLogin] = useState(null)
   const [password, setPassword] = useState(null)
 
   const [alert, setAlert] = React.useState({
@@ -43,7 +43,7 @@ const Login = (props) => {
     e.preventDefault() // Prevents reloading after form submission
     // Sends post request to api
     axios.post(`${domainUrl}/api/login`, {
-      email: email,
+      login: login,
       password: password
     })
       .then(function (response) {
@@ -66,15 +66,14 @@ const Login = (props) => {
   return (
     <>
       <Container className={classes.container}>
-        <form onSubmit={submitHandler} >
+        <form onSubmit={submitHandler}>
           <Input
             fullWidth
-            placeholder='Email'
-            type='email'
-            id='email'
-            onChange={e => setEmail(e.target.value)}
+            placeholder='Login'
+            id='login'
+            onChange={e => setLogin(e.target.value)}
             required
-            inputProps={{ 'aria-label': 'email' }}
+            inputProps={{ 'aria-label': 'login' }}
           />
           <Input
             fullWidth
